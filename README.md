@@ -1,3 +1,29 @@
+### `src Folder Structure`
+```bash
+src
+├── App.js
+├── App.test.js
+├── components
+│   └── Navbar
+│       └── index.js
+├── index.css
+├── index.js
+├── logo.svg
+├── pages
+│   ├── About
+│   │   └── index.js
+│   ├── Career
+│   │   └── index.js
+│   ├── Home
+│   │   └── index.js
+│   └── Not404
+│       └── index.js
+├── reportWebVitals.js
+├── setupTests.js
+└── Suspense
+    └── SuspenseComponent.js
+```
+
 In React, `Suspense` and `React.lazy()` are two powerful features that help you optimize your application's performance by allowing you to load components lazily (i.e., only when they are needed).
 
 ### `React.lazy()`
