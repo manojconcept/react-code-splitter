@@ -1,11 +1,14 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
+import { lazy } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
+
+//created for seprated chuck from material ui Box component
+import { SuspenseComponent } from '../../Suspense/SuspenseComponent';
+const Box = lazy(() => import("@mui/material/Box"));
 
 const bull = (
     <Box
@@ -17,7 +20,7 @@ const bull = (
 );
 
 const cardContent = (
-    <React.Fragment>
+    <>
         <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 Word of the Day
@@ -37,7 +40,7 @@ const cardContent = (
         <CardActions>
             <Button size="small">Learn More</Button>
         </CardActions>
-    </React.Fragment>
+    </>
 );
 
 export default function Home() {
@@ -49,19 +52,37 @@ export default function Home() {
             initial={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             key={index}
-            className="col-md-4 mb-4" 
+            className="col-md-4 mb-4"
         >
             <Card variant="outlined">{cardContent}</Card>
         </motion.div>
     ));
 
     return (
-        <Box sx={{ minWidth: 275 }}>
-            <div className="container">
-                <div className="row">
-                    {cards}
-                </div>
+        <>
+            {/*<Load New Component> */}
+            <div className="container mt-3">
+                <h5>{"<Load New Component>"}</h5>
+                <h5>Repo
+                    : <a
+                        target='_blank'
+                        href='https://github.com/manojconcept/react-code-splitter'
+                        rel="noopener noreferrer"
+                    >
+                        click here
+                    </a>
+                </h5>
             </div>
-        </Box>
+
+            <SuspenseComponent>
+                <Box sx={{ minWidth: 275 }}>
+                    <div className="container">
+                        <div className="row">
+                            {cards}
+                        </div>
+                    </div>
+                </Box>
+            </SuspenseComponent>
+        </>
     );
 }
